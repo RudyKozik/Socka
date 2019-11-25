@@ -25,7 +25,7 @@
   </v-app>
 </template>
 
-<script lang="ts">
+<script>
 import firebase from 'firebase';
 export default {
   name: 'register',
