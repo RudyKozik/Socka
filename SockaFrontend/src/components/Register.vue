@@ -17,7 +17,7 @@
             <v-text-field type="password" v-model="reRassword" label="Opakovať heslo" outlined></v-text-field>
           </v-col>
 
-           <v-col :md="6">
+           <v-col :md="8">
             <v-btn class="btn" @click="register" outlined>Registrovať sa</v-btn>
           </v-col>
         </v-row>
