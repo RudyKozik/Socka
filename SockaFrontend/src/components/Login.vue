@@ -1,17 +1,17 @@
 <template>
     <v-app>
       <form action="" method="post">
-        <v-row justify-end>
-          <v-col :md="4">
-            <v-text-field v-model="userName" label="UserName" outlined></v-text-field>
+        <v-row>
+          <v-col>
+            <v-text-field class="bRad" dense v-model="userName" label="UserName" outlined></v-text-field>
           </v-col>
 
-          <v-col :md="4">
-            <v-text-field type="password" v-model="password" label="Password" outlined></v-text-field>
+          <v-col>
+            <v-text-field class="bRad" dense type="password" v-model="password" label="Password" outlined></v-text-field>
           </v-col>
 
-           <v-col :md="4">
-            <v-btn class="btn" @click="Send" outlined>Login</v-btn>
+           <v-col>
+            <v-btn class="btn" height="40px" @click="Send" depressed color="main">Login</v-btn>
           </v-col>
         </v-row>
      </form>
@@ -23,7 +23,7 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import axios from "axios";
 import LoginResponse from "@/api/LoginResponse";
-import firebase  from "firebase";
+
 
 @Component
 export default class Login extends Vue {
@@ -62,7 +62,14 @@ export default class Login extends Vue {
 
 <style lang="scss" scoped>
 .btn{
-  width: 200px;
-  height: 75px;
+  width: 150px;
+  font-style: normal;
+  font-weight: bolder;
+  font-size: 14px;
+  line-height: 28px;
+  border-radius: 10px;
+}
+.bRad{
+  border-radius: 10px;
 }
 </style>

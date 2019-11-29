@@ -7,7 +7,7 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
         <v-toolbar-items>
-           <Login  />
+
         </v-toolbar-items>
     </v-app-bar>
 
@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import Reg from "@/components/Register";
+import Reg from "@/components/Register.vue";
 
 export default Vue.extend({
   components:{

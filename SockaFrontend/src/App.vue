@@ -19,4 +19,12 @@ export default Vue.extend({
 });
 </script>
 
+<style lang="scss">
+#v-app{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box ;
+}
+</style>
+
 
