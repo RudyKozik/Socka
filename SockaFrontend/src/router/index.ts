@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Opening from '../views/Opening.vue'
-import Reg from '../views/Reg.vue'
+import Opening from '../views/OpeningPage.vue'
+import Reg from '../views/RegPage.vue'
 
 Vue.use(VueRouter)
 
@@ -12,7 +12,7 @@ const routes = [
     component: Opening
   },
   {
-    path: '/reg',
+    path: '/Registration',
     name: 'reg',
     component: Reg
   },

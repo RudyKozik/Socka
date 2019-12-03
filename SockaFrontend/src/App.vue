@@ -1,6 +1,6 @@
 <template>
-  <v-app>
-      <router-view></router-view>
+  <v-app id="app">
+    <router-view class="background"></router-view>
   </v-app>
 </template>
 
@@ -20,10 +20,10 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-#v-app{
+#app{
   margin: 0px;
   padding: 0px;
-  box-sizing: border-box ;
+  box-sizing: border-box;
 }
 </style>
 

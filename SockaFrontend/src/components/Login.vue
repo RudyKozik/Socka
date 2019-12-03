@@ -1,21 +1,40 @@
 <template>
-    <v-app>
-      <form action="" method="post">
+  <div class="form">
+    <form action="" method="post">
         <v-row>
           <v-col>
-            <v-text-field class="bRad" dense v-model="userName" label="UserName" outlined></v-text-field>
+            <v-text-field 
+              class="txtField" 
+              dense 
+              v-model="userName" 
+              label="UserName" 
+              outlined>
+            </v-text-field>
           </v-col>
-
           <v-col>
-            <v-text-field class="bRad" dense type="password" v-model="password" label="Password" outlined></v-text-field>
+            <v-text-field 
+              class="txtField" 
+              dense 
+              type="password" 
+              v-model="password" 
+              label="Password" 
+              outlined>
+            </v-text-field>
           </v-col>
-
            <v-col>
-            <v-btn class="btn" height="40px" @click="Send" depressed color="main">Login</v-btn>
+            <v-btn 
+              class="btn" 
+              height="40px" 
+              width= "200px"
+              @click="Send" 
+              depressed 
+              color="main">
+              Prihlásiť sa
+            </v-btn>
           </v-col>
         </v-row>
      </form>
-    </v-app>
+  </div>
 </template>
 
 <script lang="ts">
@@ -62,14 +81,13 @@ export default class Login extends Vue {
 
 <style lang="scss" scoped>
 .btn{
-  width: 150px;
   font-style: normal;
   font-weight: bolder;
   font-size: 14px;
   line-height: 28px;
   border-radius: 10px;
 }
-.bRad{
+.txtField{
   border-radius: 10px;
 }
 </style>

@@ -1,0 +1,12 @@
+position: absolute;
+  top: 35%;
+  left: 10%;
+
+    position: absolute;
+  top: 42%;
+  left: 10%;
+
+  position: absolute;
+  border-radius: 10px;
+  top: 55%;
+  left: 10%;
