@@ -29,7 +29,7 @@
               @click="Send" 
               depressed 
               color="main">
-              Prihlásiť sa
+                Prihlásiť sa
             </v-btn>
           </v-col>
         </v-row>
@@ -57,37 +57,20 @@ export default class Login extends Vue {
     });
     return userInfo.data;
   }
-
-  /*public async login(){
-    let token = await this.callLogin(this.userName, this.password);
-    console.log(token); 
-    this.$router.push({ name: "about"});
-  }*/
-
-  /*private async callLogin(email: string, password: string): Promise<string>{
-    try {
-      // let result = await axios.post("https://localhost:5001/WeatherForecast/",{email: email ,password: password});
-      // let response = result.data as LoginResponse;
-      let result = await axios.get(`https://localhost:5001/WeatherForecast/${email}`);
-      return result.data;
-    } catch (error) {
-      console.log(error);
-      return error;
-    }
-    
-  }*/
 }
 </script>
 
 <style lang="scss" scoped>
 .btn{
+  font-family: 'Sulphur Point', serif;
   font-style: normal;
-  font-weight: bolder;
-  font-size: 14px;
+  font-weight: bold;
+  font-size: 16px;
   line-height: 28px;
   border-radius: 10px;
 }
 .txtField{
+  font-family: 'Sulphur Point', serif;
   border-radius: 10px;
 }
 </style>

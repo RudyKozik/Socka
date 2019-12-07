@@ -23,7 +23,7 @@
                 color="main"
                 depressed 
                 class="btn">
-                Zaregistuj sa
+                  Zaregistuj sa
               </v-btn>
             </router-link>
           </v-col>
@@ -54,6 +54,7 @@ export default Vue.extend({
   position: absolute;
   top: 35%;
   left: 10%;
+  font-family: 'Sulphur Point', serif;
   font-style: normal;
   font-weight: normal;
   font-size: 48px;
@@ -63,6 +64,7 @@ export default Vue.extend({
   position: absolute;
   top: 42%;
   left: 10%;
+  font-family: 'Sulphur Point', serif;
   font-style: normal;
   font-weight: bold;
   font-size: 48px;
@@ -76,8 +78,9 @@ export default Vue.extend({
   border-radius: 10px;
   top: 55%;
   left: 10%;
+  font-family: 'Sulphur Point', serif;
   font-style: normal;
-  font-weight: bolder;
+  font-weight: bold;
   font-size: 14px;
   line-height: 28px;
 }

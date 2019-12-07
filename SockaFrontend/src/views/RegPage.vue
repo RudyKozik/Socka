@@ -19,7 +19,7 @@
             </router-link> 
           </v-toolbar-items>
         </v-app-bar>
-
+        
         <v-content>
           <v-row> 
             <v-col :md="5" :sm="12" class="center">
