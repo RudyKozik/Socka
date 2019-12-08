@@ -1,5 +1,5 @@
 <template>
-  <v-app id="opening">
+  <div id="opening">
     <v-container fluid>
       <v-app-bar app flat color="background">
         <v-toolbar-title class="headline">
@@ -13,7 +13,7 @@
       </v-app-bar>
       <v-content>  
         <v-row>
-          <v-col :md="4" :sm="12">
+          <v-col :lg="4" :md="5" :sm="12">
             <h1 class="introA">Všetko čo potrebuješ</h1>
             <h1 class="introB">na jednom mieste.</h1> 
             <router-link class="link" :to="{name: 'reg'}">
@@ -27,13 +27,13 @@
               </v-btn>
             </router-link>
           </v-col>
-          <v-col :md="8" :sm="12" class="center">
+          <v-col :lg="8" :md="7" :sm="12" class="center">
             <v-img src="@/assets/frisbee-guy.svg" aspect-ratio="1.7" contain ></v-img>
           </v-col>
         </v-row>
       </v-content>
     </v-container>
-  </v-app>
+  </div>
 </template>
 
 <script lang="ts">

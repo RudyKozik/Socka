@@ -1,20 +1,26 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Opening from '../views/OpeningPage.vue'
+import Welcome from '../views/WelcomePage.vue'
 import Reg from '../views/RegPage.vue'
+import Home from "../views/HomePage.vue";
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'opening',
-    component: Opening
+    name: 'welcome',
+    component: Welcome
   },
   {
     path: '/Registration',
     name: 'reg',
     component: Reg
+  },
+  {
+    path: '/',
+    name: 'home',
+    component: Home
   },
 ]
 

@@ -1,5 +1,5 @@
 <template>
-    <v-app id="reg">
+    <div id="reg">
       <v-container fluid>
        <v-app-bar app flat color="background">
         <v-toolbar-title class="headline">
@@ -8,7 +8,7 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
           <v-toolbar-items class="center">
-            <router-link class="link" :to="{name: 'opening'}">
+            <router-link class="link" :to="{name: 'welcome'}">
               <v-btn 
               icon
               x-large
@@ -22,16 +22,16 @@
         
         <v-content>
           <v-row> 
-            <v-col :md="5" :sm="12" class="center">
+            <v-col :lg="5" :sm="12" class="center">
               <Reg />
             </v-col>
-            <v-col :md="7" :sm="12" class="center">
+            <v-col :lg="7" :sm="12" class="center">
               <v-img src="@/assets/runner.svg" aspect-ratio="2.2" contain></v-img>
             </v-col>
           </v-row>
         </v-content>
       </v-container>
-    </v-app>
+    </div>
 </template>
 
 <script lang="ts">
