@@ -3,32 +3,21 @@
     <form action method="post">
       <v-row class="center">
         <v-col :md="5" :sm="2">
-          <v-text-field 
-          class="first txtField" 
-          label="Meno" 
-          v-model="name"
-          clearable 
-          outlined>
-          </v-text-field>
+          <v-text-field class="first txtField" label="Meno" v-model="name" clearable outlined></v-text-field>
         </v-col>
         <v-col :md="5" :sm="2">
-          <v-text-field 
-          class="first txtField" 
-          label="Priezvisko" 
-          v-model="lastName"
-          clearable 
-          outlined>
-          </v-text-field>
+          <v-text-field
+            class="first txtField"
+            label="Priezvisko"
+            v-model="surname"
+            clearable
+            outlined
+          ></v-text-field>
         </v-col>
       </v-row>
       <v-row class="center">
         <v-col :md="10" :sm="5">
-          <v-text-field 
-          class="txtField" 
-          v-model="mail" 
-          label="Mail" 
-          outlined>
-          </v-text-field>
+          <v-text-field class="txtField" v-model="mail" label="Mail" outlined></v-text-field>
         </v-col>
       </v-row>
       <v-row class="center">
@@ -70,28 +59,25 @@ export default class Registration extends Vue {
   mail: string = "";
   password: string = "";
   name: string = "";
-  lastName: string = "";
+  surname: string = "";
 
   public Register() {
-    let user = firebase
+    firebase
       .auth()
       .createUserWithEmailAndPassword(this.mail, this.password)
-      .then(
-        async data => {
-          console.log(data);
-          this.$router.push({ name: "home" });
-          await axios.post("https://localhost:5001/User", {
-            name: this.name,
-            lastName: this.lastName,
-            mail: this.mail,
-            password: this.password
-          });
-          return data.user;
-        },
-        err => {
-          alert(err.message);
-        }
-      );
+      .then(async registration => {
+        console.log(registration);
+        this.$router.push({ name: "home" });
+        await axios.post("https://localhost:5001/User", {
+          name: this.name,
+          surname: this.surname,
+          mail: this.mail,
+          password: this.password
+        });
+      })
+      .catch(err => {
+        alert(err.message);
+      });
   }
 }
 </script>

@@ -12,9 +12,9 @@ namespace SockaBackend.Infrastructure
 
         public Database()
         {
-         
-           
-            
+
+
+
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

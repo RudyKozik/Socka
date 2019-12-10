@@ -28,7 +28,7 @@ namespace SockaBackend.WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateUser(CreateUserRequestModel request, CancellationToken cancellation)
         {
-            await mediator.Send(new CreateUserRequest(request.Name, request.Password), cancellation);
+            await mediator.Send(new CreateUserRequest(request.Name, request.Surname, request.Mail, request.Password), cancellation);
             return Ok();
         }
     }

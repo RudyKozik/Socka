@@ -22,7 +22,7 @@ namespace SockaBackend.WebApi.Aplication.Queries
 
         protected override async Task Handle(CreateUserRequest request, CancellationToken cancellationToken)
         {
-            database.Users.Add(new Domain.User(request.Password, request.Name));
+            database.Users.Add(new Domain.User(request.Name, request.Surname, request.Mail, request.Password));
             
             await database.SaveChangesAsync(cancellationToken);      
         }
