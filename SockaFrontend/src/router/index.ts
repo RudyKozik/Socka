@@ -18,7 +18,7 @@ const routes = [
     component: Reg
   },
   {
-    path: '/',
+    path: '/home',
     name: 'home',
     component: Home
   },

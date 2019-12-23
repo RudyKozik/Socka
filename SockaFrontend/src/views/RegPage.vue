@@ -1,7 +1,7 @@
 <template>
     <div id="reg">
       <v-container fluid>
-       <v-app-bar app flat color="background">
+      <v-app-bar app flat color="background">
         <v-toolbar-title class="headline">
           <span class="font-weight-light">Ultimate</span>
           <span>Web</span>

@@ -62,12 +62,12 @@ export default class Registration extends Vue {
   surname: string = "";
 
   public Register() {
-    firebase
+    let reg = firebase
       .auth()
       .createUserWithEmailAndPassword(this.mail, this.password)
       .then(async registration => {
         console.log(registration);
-        this.$router.push({ name: "home" });
+        this.$router.push({ name: "welcome" });
         await axios.post("https://localhost:5001/User", {
           name: this.name,
           surname: this.surname,

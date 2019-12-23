@@ -6,8 +6,8 @@
             <v-text-field 
               class="txtField" 
               dense 
-              v-model="userName" 
-              label="UserName" 
+              v-model="mail" 
+              label="mail" 
               outlined>
             </v-text-field>
           </v-col>
@@ -21,19 +21,19 @@
               outlined>
             </v-text-field>
           </v-col>
-           <v-col>
+          <v-col>
             <v-btn 
               class="btn" 
               height="40px" 
               width= "200px"
-              @click="Send" 
+              @click="Login" 
               depressed 
               color="main">
                 Prihlásiť sa
             </v-btn>
           </v-col>
         </v-row>
-     </form>
+    </form>
   </div>
 </template>
 
@@ -42,20 +42,29 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import axios from "axios";
 import LoginResponse from "@/api/LoginResponse";
+import firebase from "firebase"
 
 
 @Component
 export default class Login extends Vue {
-  userName: string = ""
-  password: string = ""
-  
+  mail: string = "";
+  password: string = "";
+  status: string = "Login";
 
-  public async Send(): Promise<string> {
-    let userInfo = await axios.post("https://localhost:5001/User", {
-      name: this.userName,
-      password: this.password
-    });
-    return userInfo.data;
+  public Login() {
+    let login = firebase
+      .auth()
+      .signInWithEmailAndPassword(this.mail, this.password)
+      .then(async send =>{
+        this.$router.push({name: "home" });
+        await axios.post("https://localhost:5001/User",{
+          mail: this.mail,
+          status: this.status
+        });
+      })
+      .catch(err => {
+        alert(err.message);
+      });
   }
 }
 </script>
