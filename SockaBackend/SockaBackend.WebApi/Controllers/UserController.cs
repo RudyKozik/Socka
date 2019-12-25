@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SockaBackend.Contracts.Requests;
 using SockaBackend.WebApi.Aplication.Commands;
-using SockaBackend.WebApi.Aplication.RequestModels;
 
 namespace SockaBackend.WebApi.Controllers
 {
@@ -26,9 +23,9 @@ namespace SockaBackend.WebApi.Controllers
         }       
 
         [HttpPost]
-        public async Task<IActionResult> CreateUser(CreateUserRequestModel request, CancellationToken cancellation)
+        public async Task<IActionResult> CreateUser(CreateUserRequest request, CancellationToken cancellation)
         {
-            await mediator.Send(new CreateUserRequest(request.Name, request.Surname, request.Mail, request.Password), cancellation);
+            await mediator.Send(new CreateUserCommand(request.Name, request.Surname, request.Mail), cancellation);
             return Ok();
         }
     }

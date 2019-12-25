@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SockaBackend.Domain;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Reflection;
 
 namespace SockaBackend.Infrastructure
 {
@@ -12,10 +10,8 @@ namespace SockaBackend.Infrastructure
 
         public Database()
         {
-
-
-
         }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -24,5 +20,11 @@ namespace SockaBackend.Infrastructure
                 optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=UltiWeb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             }
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        }
     }
 }
+

@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SockaBackend.Contracts\SockaBackend.Contracts.csproj" />
     <ProjectReference Include="..\SockaBackend.Domain\SockaBackend.Domain.csproj" />
     <ProjectReference Include="..\SockaBackend.Infrastructure\SockaBackend.Infrastructure.csproj" />
   </ItemGroup>

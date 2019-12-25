@@ -6,6 +6,7 @@ import vuetify from './plugins/vuetify';
 import * as firebase from 'firebase';
 
 
+
 Vue.config.productionTip = false
 
 new Vue({
@@ -13,7 +14,9 @@ new Vue({
   store,
   vuetify,
   render: h => h(App)
-}).$mount('#app')
+}).$mount('#app');
+
+
 
 var config = {
   apiKey: "AIzaSyDu36_qFlriJ_RlnQ5us1T6UtFXvP1fk7M",

@@ -13,7 +13,7 @@
       </v-app-bar>
       <v-content>  
         <v-row>
-          <v-col :lg="4" :md="5" :sm="12">
+          <v-col :lg="4" :md="5" :sm="12" xs12>
             <h1 class="introA">Všetko čo potrebuješ</h1>
             <h1 class="introB">na jednom mieste.</h1> 
             <router-link class="link" :to="{name: 'reg'}">
@@ -27,7 +27,7 @@
               </v-btn>
             </router-link>
           </v-col>
-          <v-col :lg="8" :md="7" :sm="12" class="center">
+          <v-col :lg="8" :md="7" :sm="12" xs12 class="center">
             <v-img src="@/assets/frisbee-guy.svg" aspect-ratio="1.7" contain ></v-img>
           </v-col>
         </v-row>

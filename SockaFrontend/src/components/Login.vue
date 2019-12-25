@@ -49,22 +49,13 @@ import firebase from "firebase"
 export default class Login extends Vue {
   mail: string = "";
   password: string = "";
-  status: string = "Login";
 
-  public Login() {
-    let login = firebase
-      .auth()
-      .signInWithEmailAndPassword(this.mail, this.password)
-      .then(async send =>{
-        this.$router.push({name: "home" });
-        await axios.post("https://localhost:5001/User",{
-          mail: this.mail,
-          status: this.status
-        });
-      })
-      .catch(err => {
-        alert(err.message);
-      });
+  public async Login() {
+
+    var login = await firebase.auth().signInWithEmailAndPassword(this.mail, this.password);
+    if (login) {
+      this.$router.push({name: "home" });
+    }
   }
 }
 </script>
