@@ -64,7 +64,6 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import firebase from "firebase";
 import axios from "axios";
-import { getModule } from "vuex-module-decorators";
 import { RegisterModule, ICreateUserRequest, ISendUser } from "@/store/modules/RegisterModule";
 
 @Component

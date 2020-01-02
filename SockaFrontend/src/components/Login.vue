@@ -6,8 +6,8 @@
             <v-text-field 
               class="txtField" 
               dense 
-              v-model="mail" 
-              label="mail" 
+              v-model="email" 
+              label="email" 
               outlined>
             </v-text-field>
           </v-col>
@@ -41,20 +41,20 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import axios from "axios";
-import LoginResponse from "@/api/LoginResponse";
 import firebase from "firebase"
-
+import { LoginModule, ILoginUserRequest } from "@/store/modules/LoginModule";
 
 @Component
 export default class Login extends Vue {
-  mail: string = "";
+  email: string = "";
   password: string = "";
 
   public async Login() {
 
-    var login = await firebase.auth().signInWithEmailAndPassword(this.mail, this.password);
-    if (login) {
-      this.$router.push({name: "home" });
+    let login = await LoginModule.Login({ email: this.email, password: this.password} as ILoginUserRequest);
+    LoginModule.SetUser(login); 
+    if(login){
+      this.$router.push({ name: "home" });
     }
   }
 }

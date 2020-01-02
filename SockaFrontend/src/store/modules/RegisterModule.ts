@@ -1,10 +1,10 @@
-import {Module, VuexModule, Action, Mutation, getModule, MutationAction } from 'vuex-module-decorators' 
+import {Module, VuexModule, Action, Mutation, getModule } from 'vuex-module-decorators' 
 import firebase from "firebase";
 import axios, { AxiosResponse } from "axios";
 import store from "@/store/index";
 
 export interface IUserModule {
-  User: firebase.auth.UserCredential | null
+  user: firebase.auth.UserCredential | null
 }
 
 export interface ICreateUserRequest {
@@ -12,19 +12,20 @@ export interface ICreateUserRequest {
   password: string;
 }
 
-export interface ISendUser{
+export interface ISendUser {
+  id: string;
   name: string;
   surname: string;
   email: string;
 }
 
-@Module({ dynamic: true, store, name: 'user' })
-class User extends VuexModule implements IUserModule {
-  User: firebase.auth.UserCredential | null = null;
+@Module({ dynamic: true, store, name: 'regUser' })
+class Register extends VuexModule implements IUserModule {
+  user: firebase.auth.UserCredential | null = null;
   
   @Mutation
   SetUser(authUser: firebase.auth.UserCredential){
-    this.User = authUser;
+    this.user = authUser;
   }
   
   @Action({rawError: true})
@@ -32,13 +33,12 @@ class User extends VuexModule implements IUserModule {
     let authUser = await firebase.auth().createUserWithEmailAndPassword(request.email, request.password);
     return authUser;
   } 
-
+  
   @Action({rawError: true})
   async SendUser( request: ISendUser): Promise<AxiosResponse>{
-    console.log(request.name);
-    console.log(request.surname);
-    console.log(request.email);
+    request.id = this.user?.user?.uid!;
   let result = await axios.post("https://localhost:5001/User", {
+      id: request.id,
       name: request.name,
       surname: request.surname,
       mail: request.email
@@ -47,4 +47,4 @@ class User extends VuexModule implements IUserModule {
   }
 }
 
-export const RegisterModule = getModule(User);
+export const RegisterModule = getModule(Register);
