@@ -27,7 +27,7 @@ namespace SockaBackend.WebApi.Aplication.Queries
                 throw new ArgumentException();
             }
 
-            database.Users.Add(new User(request.Name, request.Surname, request.Mail));
+            database.Users.Add(new User(request.Id, request.Name, request.Surname, request.Mail));
             
             await database.SaveChangesAsync(cancellationToken);      
         }

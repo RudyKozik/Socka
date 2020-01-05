@@ -40,7 +40,7 @@ import Reg from "@/components/Register.vue";
 
 export default Vue.extend({
   components:{
-   Reg
+    Reg
   }
   
 })
@@ -55,9 +55,9 @@ export default Vue.extend({
 border: 1px solid black;
 }
 .center{
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
 }
 </style>

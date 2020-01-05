@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <form action method="post">
+    <form action="" method="post">
       <v-row class="center">
         <v-col :md="5" :sm="2">
           <v-text-field 
@@ -86,9 +86,9 @@ export default class Registration extends Vue {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 .box {
-  border: 2px solid black;
+  border: 1.5px solid black;
   border-radius: 10px;
   text-align: center;
   width: 500px;

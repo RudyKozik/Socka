@@ -23,7 +23,14 @@ class Login extends VuexModule implements ILoginUserModule {
   @Action({rawError: true})
   async Login( request: ILoginUserRequest): Promise<firebase.auth.UserCredential> {
     let authUser = await firebase.auth().signInWithEmailAndPassword(request.email, request.password);
+    let token = firebase.auth().currentUser?.getIdToken(true); 
     return authUser;
+  } 
+
+  @Action({rawError: true})
+  async Refresh(): Promise<string> {
+    let token = await firebase.auth().currentUser?.getIdToken(true); 
+    return token!;
   } 
 }
 

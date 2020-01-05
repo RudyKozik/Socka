@@ -60,7 +60,7 @@ export default class Login extends Vue {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 .btn{
   font-family: 'Sulphur Point', serif;
   font-style: normal;
