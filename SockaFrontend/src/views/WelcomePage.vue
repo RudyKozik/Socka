@@ -1,5 +1,5 @@
 <template>
-  <div id="opening">
+  <div id="welcome">
     <v-container fluid>
       <v-app-bar app flat color="background">
         <v-toolbar-title class="headline">
@@ -85,11 +85,10 @@ export default Vue.extend({
   line-height: 28px;
 }
 .center{
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
 }
 </style>
 
- 

@@ -30,6 +30,11 @@
             <AddFeed />
           </v-col>
         </v-row>
+        <v-row>
+          <v-col class="center">
+            <Feed />
+          </v-col>
+        </v-row>
       </v-content>
     </v-container>
   </div>
@@ -38,10 +43,13 @@
 <script lang="ts">
 import Vue from 'vue'
 import AddFeed from '@/components/AddFeed.vue'
+import Feed from "@/components/Feed.vue";
+import fsd from "@/components/scdcz.vue";
 
 export default Vue.extend({
   components:{
-    AddFeed
+    AddFeed,
+    Feed
   }
 })
 </script>

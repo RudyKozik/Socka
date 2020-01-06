@@ -1,11 +1,12 @@
 <template>
-  <div class="box">
+  <v-card class="box">
     <form action="" method="post">
       <v-row class="center">
-        <v-col :md="11">
+        <v-col :md="11" :sm="11">
           <v-textarea
           class="txtarea"
           counter
+          v-model="feed"
           outlined
           filled
           no-resize
@@ -17,6 +18,7 @@
       <v-row class="center">
         <v-col :md="12" :sm="10">
           <v-btn 
+          @click="AddFeed()"
           class="btn" 
           height="40px"
           width="150px"
@@ -26,14 +28,24 @@
         </v-col>
       </v-row>
     </form>
-  </div>
+  </v-card>  
 </template>
+
+
 
 <script lang="ts">
 import Vue from 'vue'
-export default Vue.extend({
-  
-})
+import Component from 'vue-class-component'
+import { FeedModule } from '../store/modules/FeedModule';
+
+@Component
+export default class AddFeed extends Vue{
+  feed: string = "";
+
+  public AddFeed(){
+    FeedModule.SetFeed(this.feed);
+  }
+}
 </script>
 
 <style lang="css" scoped>
@@ -43,7 +55,6 @@ export default Vue.extend({
 .box{ 
   height: 250px;
   width: 500px;
-  border: 1.5px solid black;
   border-radius: 10px;
   text-align: center;
 }

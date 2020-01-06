@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <v-card  class="box">
     <form action="" method="post">
       <v-row class="center">
         <v-col :md="5" :sm="2">
@@ -56,7 +56,7 @@
         </v-col>
       </v-row>
     </form>
-  </div>
+  </v-card>
 </template>
 
 <script lang="ts">
@@ -88,7 +88,6 @@ export default class Registration extends Vue {
 
 <style lang="css" scoped>
 .box {
-  border: 1.5px solid black;
   border-radius: 10px;
   text-align: center;
   width: 500px;
