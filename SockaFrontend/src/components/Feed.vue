@@ -11,7 +11,7 @@
       <v-btn icon>
         <v-icon>mdi-heart</v-icon>
       </v-btn>
-      <v-btn icon @click="GetFeed">
+      <v-btn icon>
         <v-icon>mdi-comment-processing</v-icon>
       </v-btn>
     </v-card-actions>
@@ -26,10 +26,6 @@ import { FeedModule } from '../store/modules/FeedModule';
 @Component
 export default class Feed extends Vue{
   feed: string = "";
-
-  public GetFeed(){
-    this.feed = FeedModule.feed;    
-  }
 }
 
 </script>

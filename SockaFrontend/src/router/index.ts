@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Welcome from '../views/WelcomePage.vue'
 import Reg from '../views/RegPage.vue'
 import Home from "../views/HomePage.vue";
-import { LoginModule } from '@/store/modules/LoginModule';
+
 
 Vue.use(VueRouter)
 

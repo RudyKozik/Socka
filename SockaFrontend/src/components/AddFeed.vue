@@ -6,7 +6,7 @@
           <v-textarea
           class="txtarea"
           counter
-          v-model="feed"
+          v-model="status"
           outlined
           filled
           no-resize
@@ -36,14 +36,18 @@
 <script lang="ts">
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import { FeedModule } from '../store/modules/FeedModule';
+import { FeedModule, ISendFeed } from '../store/modules/FeedModule';
+import { RegisterModule } from '@/store/modules/RegisterModule';
+import { auth } from 'firebase';
 
 @Component
 export default class AddFeed extends Vue{
-  feed: string = "";
-
-  public AddFeed(){
-    FeedModule.SetFeed(this.feed);
+  status: string = "";
+  
+  public async AddFeed(){
+    var date = new Date();
+    var currentDateWithFormat = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " +  date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+    let feed = await FeedModule.SendFeed({status: this.status, date: currentDateWithFormat} as ISendFeed);
   }
 }
 </script>

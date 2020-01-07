@@ -1,14 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
+using System;
 
 namespace SockaBackend.Domain
 {
-    class Feed
+    public class Feed : Entity<Guid>
     {
         public string Status { get; private set; }
         public int Likes { get; private set; }
         public string Author { get; private set; }
-        public string Data { get; private set; }
+        public string Date { get; private set; }
+
+        public Feed()
+        {
+            Id = Guid.NewGuid();
+        }
+
+        public Feed(string status, int likes, string author, string date) : this()
+        {
+            Status = status;
+            Likes = likes;
+            Author = author;
+            Date = date;
+        }
     }
 }

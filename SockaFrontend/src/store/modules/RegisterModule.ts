@@ -31,6 +31,7 @@ class Register extends VuexModule implements IUserModule {
   @Action({rawError: true})
   async Register( request: ICreateUserRequest): Promise<firebase.auth.UserCredential> {
     let authUser = await firebase.auth().createUserWithEmailAndPassword(request.email, request.password);
+    console.log(authUser);
     return authUser;
   } 
   

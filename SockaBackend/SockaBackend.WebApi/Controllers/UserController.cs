@@ -16,13 +16,11 @@ namespace SockaBackend.WebApi.Controllers
     public class UserController : Controller
     {
         private readonly Database database;
-        private readonly ILogger<UserController> logger;
         private readonly IMediator mediator;
 
-        public UserController(ILogger<UserController> logger, IMediator mediator, Database database)
+        public UserController(IMediator mediator, Database database)
         {
             this.database = database;
-            this.logger = logger;
             this.mediator = mediator;
         }
 

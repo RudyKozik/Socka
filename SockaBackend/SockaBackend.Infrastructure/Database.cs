@@ -7,9 +7,11 @@ namespace SockaBackend.Infrastructure
     public class Database : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<Feed> Feeds { get; set; }
 
         public Database()
         {
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
