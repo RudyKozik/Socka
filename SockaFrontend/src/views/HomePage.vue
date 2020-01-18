@@ -1,40 +1,18 @@
 <template>
   <div id="home">
     <v-container fluid>
-      <v-app-bar app flat color="secondary">
-        <v-spacer></v-spacer>
-          <v-toolbar-items class="center">
-            <v-btn
-            depressed>
-              Menu 
-            </v-btn>
-          </v-toolbar-items>
-        <v-spacer></v-spacer>
-          <v-toolbar-title class="headline">
-            <span class="font-weight-light">Ultimate</span>
-            <span>Web</span>
-          </v-toolbar-title>
-        <v-spacer></v-spacer>
-          <v-toolbar-items class="center">
-            <v-btn
-            depressed>
-              User
-            </v-btn>
-          </v-toolbar-items>
-        <v-spacer></v-spacer>
-      </v-app-bar>
-
+      <AppBar />
       <v-content>
         <v-row>
           <v-col class="center">
             <AddFeed />
           </v-col>
         </v-row>
-        <v-row>
-          <v-col class="center">
-            <Feed />
+        <v-row > 
+          <v-col :md="12" class="center">
+            <Feeds v-on="GetAll()" :feeds="feeds" />
           </v-col>
-        </v-row>
+        </v-row>  
       </v-content>
     </v-container>
   </div>
@@ -42,16 +20,29 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import AppBar from "@/components/AppBar.vue";
 import AddFeed from '@/components/AddFeed.vue'
-import Feed from "@/components/Feed.vue";
-import fsd from "@/components/scdcz.vue";
+import Feeds from "@/components/Feeds.vue";
+import { FeedModule } from '../store/modules/FeedModule';
+import Component from 'vue-class-component';
+import { AxiosResponse } from 'axios';
 
-export default Vue.extend({
+@Component({
   components:{
-    AddFeed,
-    Feed
+    AppBar,
+    Feeds,
+    AddFeed
   }
 })
+export default class HomePage extends Vue{
+  feeds: any[] = []
+
+  public async GetAll(){
+    let result = await FeedModule.GetAll();
+    FeedModule.SetFeed(result);
+    this.feeds = FeedModule.feed;
+  }
+}
 </script>
 
 <style lang="css" scoped>

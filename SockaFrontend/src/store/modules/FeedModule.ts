@@ -4,36 +4,44 @@ import axios, { AxiosResponse } from 'axios';
 import { LoginModule } from './LoginModule';
 
 export interface IFeedModule {
-  feed: AxiosResponse | null
+  feed: (string | number)[] 
 }
 
 export interface ISendFeed {
-  status: string;
-  likes: number;
-  author: string;
-  date: string;
+  statusToSend: string;
+  likesToSend: number;
+  authorToSend: string;
+  dateToSend: string;
 }
 
 @Module({ dynamic: true, store, name: 'feed' })
 class Feed extends VuexModule implements IFeedModule {
-  feed: AxiosResponse | null = null;
+  feed: (string | number)[] = []
 
   @Mutation
-  SetFeed(feed: AxiosResponse){
-    this.feed = feed;
+  SetFeed(feeds: AxiosResponse){
+    let feed = feeds;
+    for (let i = 0; i < feed.data.length ; i++) {
+      this.feed[i] = feed.data[i];
+    }
   }
 
   @Action({rawError: true})
   async SendFeed(request: ISendFeed): Promise<AxiosResponse>{
-    request.likes = 0;
-    request.author = LoginModule.user?.user?.email!;
-    console.log(request.author);
-    let result = await axios.post("https://localhost:5001/Feed", {
-      status: request.status,
-      likes: request.likes,
-      author: request.author,
-      date: request.date
+    request.likesToSend = 0;
+    request.authorToSend = LoginModule.user?.user?.email!;
+    let result = await axios.post("https://localhost:5001/Feed/api/v1/feeds", {
+      status: request.statusToSend,
+      likes: request.likesToSend,
+      author: request.authorToSend,
+      date: request.dateToSend
     });
+    return result;
+  }
+
+  @Action({rawError: true})
+  async GetAll(): Promise<AxiosResponse> {
+    let result = await axios.get("https://localhost:5001/Feed/api/v1/feeds")
     return result;
   }
 }

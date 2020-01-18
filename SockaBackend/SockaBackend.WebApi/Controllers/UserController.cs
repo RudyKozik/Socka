@@ -24,7 +24,7 @@ namespace SockaBackend.WebApi.Controllers
             this.mediator = mediator;
         }
 
-        [HttpGet]
+        [HttpGet(ApiRoutes.Users.Get)]
         public IActionResult Get(string id) 
         {
             var get = database.Users.SingleOrDefault(x => x.Id == id);
@@ -37,7 +37,7 @@ namespace SockaBackend.WebApi.Controllers
             return Ok(get);
         }
 
-        [HttpPost]
+        [HttpPost(ApiRoutes.Users.Create)]
         public async Task<IActionResult> CreateUser(CreateUserRequest request, CancellationToken cancellation)
         {
             var getId = Get(request.Id);

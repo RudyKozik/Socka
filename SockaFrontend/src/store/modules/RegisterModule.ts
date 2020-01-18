@@ -38,7 +38,7 @@ class Register extends VuexModule implements IUserModule {
   @Action({rawError: true})
   async SendUser( request: ISendUser): Promise<AxiosResponse>{
     request.id = this.user?.user?.uid!;
-  let result = await axios.post("https://localhost:5001/User", {
+  let result = await axios.post("https://localhost:5001/User/api/v1/users", {
       id: request.id,
       name: request.name,
       surname: request.surname,

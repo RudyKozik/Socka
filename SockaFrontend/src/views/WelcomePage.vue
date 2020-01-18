@@ -8,7 +8,7 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
-            <Login />       
+            <Login />
         </v-toolbar-items>        
       </v-app-bar>
       <v-content>  
@@ -43,7 +43,7 @@ import Login from "@/components/Login.vue";
 
 export default Vue.extend({
   components:{
-    Login
+    Login 
   }
   
 })

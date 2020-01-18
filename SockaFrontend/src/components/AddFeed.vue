@@ -31,8 +31,6 @@
   </v-card>  
 </template>
 
-
-
 <script lang="ts">
 import Vue from 'vue'
 import Component from 'vue-class-component'
@@ -46,8 +44,8 @@ export default class AddFeed extends Vue{
   
   public async AddFeed(){
     var date = new Date();
-    var currentDateWithFormat = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " +  date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-    let feed = await FeedModule.SendFeed({status: this.status, date: currentDateWithFormat} as ISendFeed);
+    var currentDateWithFormat = date.getDate() + "." + (date.getMonth() + 1) + " " +  date.getHours() + ":" + date.getMinutes();
+    let feed = await FeedModule.SendFeed({statusToSend: this.status, dateToSend: currentDateWithFormat} as ISendFeed);
   }
 }
 </script>
@@ -58,7 +56,7 @@ export default class AddFeed extends Vue{
 }
 .box{ 
   height: 250px;
-  width: 500px;
+  width: 600px;
   border-radius: 10px;
   text-align: center;
 }
@@ -74,6 +72,6 @@ export default class AddFeed extends Vue{
   font-weight: bold;
   font-size: 14px;
   line-height: 28px;
-  margin-left: 250px; 
+  margin-left: 350px;
 }
 </style>
