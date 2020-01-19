@@ -9,10 +9,15 @@
 <script lang="ts">
 import Vue from 'vue'
 import Feed from "@/components/Feed.vue";
-export default Vue.extend({
-    components:{
+import Component from 'vue-class-component';
+
+@Component({
+  components:{
       Feed
     },
-    props:["feeds"]
+  props:["feeds"]
 })
+export default class Feeds extends Vue{
+  
+}
 </script>

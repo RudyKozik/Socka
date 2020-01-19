@@ -15,14 +15,19 @@ namespace SockaBackend.WebApi.Controllers
 
         public static class Feeds
         {
-            public const string GetAll = Base + "/feeds";
+            public const string GetAll = Base + "/getAll";
 
-            public const string Create = Base + "/feeds";
+            public const string Create = Base + "/create";
+
+            public const string AddLike = Base + "/addLike";
+
+            public const string UpdateLike = Base + "/updateLike";
         }
 
         public static class Users
         {
             public const string Get = Base + "/users/{id}";
+
             public const string Create = Base + "/users";
         }
     }

@@ -1,7 +1,8 @@
 <template>
   <v-card
-    light
-    width="600">
+  class="feed"
+  light
+  width="600">
     <v-card-text 
     class="headline font-weight-bold">
       {{feed.status}}
@@ -15,12 +16,14 @@
         {{feed.date}}
       </v-card-text>
       <v-spacer></v-spacer>
-      <v-btn icon>
+      <v-btn 
+      icon
+      @click="SendLike()">
         <v-icon>mdi-heart</v-icon>
-        <span>
-        {{feed.likes}}
-        </span>
       </v-btn>
+      <span>
+        {{feed.likes}}
+      </span>
       <v-btn icon>
         <v-icon>mdi-comment-processing</v-icon>
       </v-btn>
@@ -31,14 +34,25 @@
 <script lang="ts">
 import Vue from 'vue'
 import Component from 'vue-class-component';
-import { FeedModule } from '../store/modules/FeedModule';
+import { FeedModule, ISendLike } from '../store/modules/FeedModule';
 
-export default Vue.extend({
+@Component({
   props:["feed"]
 })
+export default class Feed extends Vue{
+  id: number = 0;
+  like: number = 1;
+
+  public async SendLike(){
+    this.id = this.$props.feed.id;
+    let result = await FeedModule.SendLike({idOfFeed: this.id, like: this.like } as ISendLike);
+  }
+}
 
 </script>
 
 <style scoped>
-
+.feed{
+  margin-bottom: 25px;
+}
 </style>

@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using SockaBackend.Contracts.Requests;
 using SockaBackend.Infrastructure;
 using SockaBackend.WebApi.Aplication.Commands;
+using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -32,6 +34,13 @@ namespace SockaBackend.WebApi.Controllers
         public async Task<IActionResult> AddFeed(AddFeedRequest request, CancellationToken cancellation)
         {
             await mediator.Send(new AddFeedCommand(request.Status, request.Likes, request.Author, request.Date), cancellation);
+            return Ok();
+        }
+
+        [HttpPost(ApiRoutes.Feeds.AddLike)]
+        public async Task<IActionResult> AddLike(AddLikeRequest request, CancellationToken cancellation)
+        {
+            await mediator.Send(new AddLikeCommand(request.Id, request.Like), cancellation);
             return Ok();
         }
     }

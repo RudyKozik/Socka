@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using SockaBackend.Contracts.Requests;
 using SockaBackend.Infrastructure;
 using SockaBackend.WebApi.Aplication.Commands;
@@ -25,11 +24,11 @@ namespace SockaBackend.WebApi.Controllers
         }
 
         [HttpGet(ApiRoutes.Users.Get)]
-        public IActionResult Get(string id) 
+        public IActionResult GetId(string id) 
         {
             var get = database.Users.SingleOrDefault(x => x.Id == id);
 
-            if(get == null)
+            if (get == null)
             {
                 return null;
             }
@@ -40,7 +39,7 @@ namespace SockaBackend.WebApi.Controllers
         [HttpPost(ApiRoutes.Users.Create)]
         public async Task<IActionResult> CreateUser(CreateUserRequest request, CancellationToken cancellation)
         {
-            var getId = Get(request.Id);
+            var getId = GetId(request.Id);
 
             if(getId == null)
             {

@@ -6,7 +6,7 @@ namespace SockaBackend.Domain
     public class Feed : Entity<Guid>
     {
         public string Status { get; private set; }
-        public int Likes { get; private set; }
+        public int Likes { get; set; }
         public string Author { get; private set; }
         public string Date { get; private set; }
 
@@ -21,6 +21,11 @@ namespace SockaBackend.Domain
             Likes = likes;
             Author = author;
             Date = date;
+        }
+
+        public Feed(int likes)
+        {
+            Likes = likes;
         }
     }
 }
