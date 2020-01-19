@@ -8,23 +8,22 @@ namespace SockaBackend.Domain
         public string Name { get; private set; }
         public string Surname { get; private set; }
         public string Mail { get; private set; }
-        public string Password { get; private set; }
-        
-
-
-
 
         public User()
         {
-            Id = Guid.NewGuid().ToString();  
+
         }
 
-        public User(string name, string surname, string mail, string password) : this()
+        public User(string id, string name, string surname, string mail) : this()
         {
+            Id = id;
+            if (string.IsNullOrEmpty(mail))
+            {
+                throw new ArgumentException();
+            }
             Name = name;
             Surname = surname;
             Mail = mail;
-            Password = password;
         }
     }
 }

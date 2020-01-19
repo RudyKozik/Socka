@@ -1,12 +1,12 @@
 <template>
     <div id="reg">
       <v-container fluid>
-       <v-app-bar app flat color="background">
-        <v-toolbar-title class="headline">
-          <span class="font-weight-light">Ultimate</span>
-          <span>Web</span>
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
+        <v-app-bar app flat color="background">
+          <v-toolbar-title class="headline">
+            <span class="font-weight-light">Ultimate</span>
+            <span>Web</span>
+          </v-toolbar-title>
+          <v-spacer></v-spacer>
           <v-toolbar-items class="center">
             <router-link class="link" :to="{name: 'welcome'}">
               <v-btn 
@@ -19,13 +19,12 @@
             </router-link> 
           </v-toolbar-items>
         </v-app-bar>
-        
         <v-content>
           <v-row> 
-            <v-col :lg="5" :sm="12" class="center">
+            <v-col xs12 :lg="5" :sm="12" class="center">
               <Reg />
             </v-col>
-            <v-col :lg="7" :sm="12" class="center">
+            <v-col xs12 :lg="7" :sm="12" class="center">
               <v-img src="@/assets/runner.svg" aspect-ratio="2.2" contain></v-img>
             </v-col>
           </v-row>
@@ -38,9 +37,10 @@
 import Vue from "vue";
 import Reg from "@/components/Register.vue";
 
+
 export default Vue.extend({
   components:{
-   Reg
+    Reg
   }
   
 })
@@ -55,9 +55,9 @@ export default Vue.extend({
 border: 1px solid black;
 }
 .center{
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
 }
 </style>

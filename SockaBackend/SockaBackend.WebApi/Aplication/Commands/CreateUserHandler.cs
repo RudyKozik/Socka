@@ -1,8 +1,8 @@
 ﻿using MediatR;
+using SockaBackend.Domain;
 using SockaBackend.Infrastructure;
 using SockaBackend.WebApi.Aplication.Commands;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SockaBackend.WebApi.Aplication.Queries
 {
-    public class CreateUserHandler : AsyncRequestHandler<CreateUserRequest>
+    public class CreateUserHandler : AsyncRequestHandler<CreateUserCommand>
     {
         private readonly Database database;
 
@@ -20,9 +20,14 @@ namespace SockaBackend.WebApi.Aplication.Queries
         }
 
 
-        protected override async Task Handle(CreateUserRequest request, CancellationToken cancellationToken)
+        protected override async Task Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            database.Users.Add(new Domain.User(request.Name, request.Surname, request.Mail, request.Password));
+            if(database.Users.Any(u => u.Mail == request.Mail))
+            {
+                throw new ArgumentException();
+            }
+
+            database.Users.Add(new User(request.Id, request.Name, request.Surname, request.Mail));
             
             await database.SaveChangesAsync(cancellationToken);      
         }

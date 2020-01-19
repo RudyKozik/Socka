@@ -4,16 +4,17 @@ import Welcome from '../views/WelcomePage.vue'
 import Reg from '../views/RegPage.vue'
 import Home from "../views/HomePage.vue";
 
+
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/welcome',
     name: 'welcome',
     component: Welcome
   },
   {
-    path: '/Registration',
+    path: '/registration',
     name: 'reg',
     component: Reg
   },

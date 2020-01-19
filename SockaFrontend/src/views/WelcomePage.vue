@@ -1,5 +1,5 @@
 <template>
-  <div id="opening">
+  <div id="welcome">
     <v-container fluid>
       <v-app-bar app flat color="background">
         <v-toolbar-title class="headline">
@@ -8,12 +8,12 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
-            <Login />       
+            <Login />
         </v-toolbar-items>        
       </v-app-bar>
       <v-content>  
         <v-row>
-          <v-col :lg="4" :md="5" :sm="12">
+          <v-col :lg="4" :md="5" :sm="12" xs12>
             <h1 class="introA">Všetko čo potrebuješ</h1>
             <h1 class="introB">na jednom mieste.</h1> 
             <router-link class="link" :to="{name: 'reg'}">
@@ -27,7 +27,7 @@
               </v-btn>
             </router-link>
           </v-col>
-          <v-col :lg="8" :md="7" :sm="12" class="center">
+          <v-col :lg="8" :md="7" :sm="12" xs12 class="center">
             <v-img src="@/assets/frisbee-guy.svg" aspect-ratio="1.7" contain ></v-img>
           </v-col>
         </v-row>
@@ -43,7 +43,7 @@ import Login from "@/components/Login.vue";
 
 export default Vue.extend({
   components:{
-    Login
+    Login 
   }
   
 })
@@ -85,11 +85,10 @@ export default Vue.extend({
   line-height: 28px;
 }
 .center{
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
 }
 </style>
 
- 

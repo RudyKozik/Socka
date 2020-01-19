@@ -6,8 +6,8 @@
             <v-text-field 
               class="txtField" 
               dense 
-              v-model="userName" 
-              label="UserName" 
+              v-model="email" 
+              label="email" 
               outlined>
             </v-text-field>
           </v-col>
@@ -21,19 +21,19 @@
               outlined>
             </v-text-field>
           </v-col>
-           <v-col>
+          <v-col>
             <v-btn 
               class="btn" 
               height="40px" 
               width= "200px"
-              @click="Send" 
+              @click="Login" 
               depressed 
               color="main">
                 Prihlásiť sa
             </v-btn>
           </v-col>
         </v-row>
-     </form>
+    </form>
   </div>
 </template>
 
@@ -41,26 +41,26 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import axios from "axios";
-import LoginResponse from "@/api/LoginResponse";
-
+import firebase from "firebase"
+import { LoginModule, ILoginUserRequest } from "@/store/modules/LoginModule";
 
 @Component
 export default class Login extends Vue {
-  userName: string = ""
-  password: string = ""
-  
+  email: string = "";
+  password: string = "";
 
-  public async Send(): Promise<string> {
-    let userInfo = await axios.post("https://localhost:5001/User", {
-      name: this.userName,
-      password: this.password
-    });
-    return userInfo.data;
+  public async Login() {
+
+    let login = await LoginModule.Login({ email: this.email, password: this.password} as ILoginUserRequest);
+    LoginModule.SetUser(login); 
+    if(login){
+      this.$router.push({ name: "home" });
+    }
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 .btn{
   font-family: 'Sulphur Point', serif;
   font-style: normal;

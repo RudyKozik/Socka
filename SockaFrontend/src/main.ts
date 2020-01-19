@@ -6,6 +6,7 @@ import vuetify from './plugins/vuetify';
 import * as firebase from 'firebase';
 
 
+
 Vue.config.productionTip = false
 
 new Vue({
@@ -13,16 +14,14 @@ new Vue({
   store,
   vuetify,
   render: h => h(App)
-}).$mount('#app')
+}).$mount('#app');
+
+
 
 var config = {
   apiKey: "AIzaSyDu36_qFlriJ_RlnQ5us1T6UtFXvP1fk7M",
-  authDomain: "ultimateweb-8eddb.firebaseapp.com",
-  databaseURL: "https://ultimateweb-8eddb.firebaseio.com",
-  projectId: "ultimateweb-8eddb",
-  storageBucket: "ultimateweb-8eddb.appspot.com",
-  messagingSenderId: "1079437673135",
+  authDomain: "ultimateweb-8eddb.firebaseapp.com", 
+  projectId: "ultimateweb-8eddb", 
   appId: "1:1079437673135:web:2814eb771bc70be8010a5a",
-  measurementId: "G-FKBBY64K2Z"
 }
 firebase.initializeApp(config)

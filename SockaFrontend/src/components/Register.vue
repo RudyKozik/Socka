@@ -1,9 +1,15 @@
 <template>
-  <div class="box">
-    <form action method="post">
+  <v-card  class="box">
+    <form action="" method="post">
       <v-row class="center">
         <v-col :md="5" :sm="2">
-          <v-text-field class="first txtField" label="Meno" v-model="name" clearable outlined></v-text-field>
+          <v-text-field 
+          class="first txtField" 
+          label="Meno" 
+          v-model="name" 
+          clearable
+          outlined>
+          </v-text-field>
         </v-col>
         <v-col :md="5" :sm="2">
           <v-text-field
@@ -17,17 +23,22 @@
       </v-row>
       <v-row class="center">
         <v-col :md="10" :sm="5">
-          <v-text-field class="txtField" v-model="mail" label="Mail" outlined></v-text-field>
+          <v-text-field 
+          class="txtField" 
+          v-model="email" 
+          label="Mail" 
+          outlined>
+          </v-text-field>
         </v-col>
       </v-row>
       <v-row class="center">
         <v-col :md="10" :sm="5">
           <v-text-field
             class="txtField"
-            type="password"
             v-model="password"
             label="Heslo"
             outlined
+            type="password"
             hint="Uistite sa, že je to najmenej 8 znakov vrátane čísla a velkého písmena."
           ></v-text-field>
         </v-col>
@@ -39,13 +50,13 @@
             height="40px"
             width="200px"
             color="main"
-            @click="Register"
+            @click="Register()"
             depressed
           >Registrácia</v-btn>
         </v-col>
       </v-row>
     </form>
-  </div>
+  </v-card>
 </template>
 
 <script lang="ts">
@@ -53,38 +64,30 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import firebase from "firebase";
 import axios from "axios";
+import { RegisterModule, ICreateUserRequest, ISendUser } from "@/store/modules/RegisterModule";
 
 @Component
 export default class Registration extends Vue {
-  mail: string = "";
+  email: string = "";
   password: string = "";
   name: string = "";
   surname: string = "";
 
-  public Register() {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(this.mail, this.password)
-      .then(async registration => {
-        console.log(registration);
-        this.$router.push({ name: "home" });
-        await axios.post("https://localhost:5001/User", {
-          name: this.name,
-          surname: this.surname,
-          mail: this.mail,
-          password: this.password
-        });
-      })
-      .catch(err => {
-        alert(err.message);
-      });
+  public async Register() {
+    let user = await RegisterModule.Register({ email: this.email, password: this.password} as ICreateUserRequest);
+    RegisterModule.SetUser(user); 
+    if(user){
+      let send = await RegisterModule.SendUser({name: this.name, surname: this.surname, email: this.email} as ISendUser);
+      if(send){
+        this.$router.push({ name: "welcome" });
+      }
+    }
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 .box {
-  border: 2px solid black;
   border-radius: 10px;
   text-align: center;
   width: 500px;
