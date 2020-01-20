@@ -42,7 +42,7 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import axios from "axios";
 import firebase from "firebase"
-import { LoginModule, ILoginUserRequest } from "@/store/modules/LoginModule";
+import { UserModule, ILoginUserRequest } from "@/store/modules/UserModule";
 
 @Component
 export default class Login extends Vue {
@@ -51,8 +51,8 @@ export default class Login extends Vue {
 
   public async Login() {
 
-    let login = await LoginModule.Login({ email: this.email, password: this.password} as ILoginUserRequest);
-    LoginModule.SetUser(login); 
+    let login = await UserModule.Login({ email: this.email, password: this.password} as ILoginUserRequest);
+    UserModule.SetUser(login); 
     if(login){
       this.$router.push({ name: "home" });
     }

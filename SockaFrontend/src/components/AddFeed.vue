@@ -35,8 +35,6 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import { FeedModule, ISendFeed } from '../store/modules/FeedModule';
-import { RegisterModule } from '@/store/modules/RegisterModule';
-import { auth } from 'firebase';
 
 @Component
 export default class AddFeed extends Vue{

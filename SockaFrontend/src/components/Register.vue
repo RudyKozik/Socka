@@ -64,7 +64,7 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import firebase from "firebase";
 import axios from "axios";
-import { RegisterModule, ICreateUserRequest, ISendUser } from "@/store/modules/RegisterModule";
+import { UserModule, ICreateUserRequest, ISendUser } from "@/store/modules/UserModule";
 
 @Component
 export default class Registration extends Vue {
@@ -74,12 +74,12 @@ export default class Registration extends Vue {
   surname: string = "";
 
   public async Register() {
-    let user = await RegisterModule.Register({ email: this.email, password: this.password} as ICreateUserRequest);
-    RegisterModule.SetUser(user); 
+    let user = await UserModule.Register({ email: this.email, password: this.password} as ICreateUserRequest);
+    UserModule.SetUser(user); 
     if(user){
-      let send = await RegisterModule.SendUser({name: this.name, surname: this.surname, email: this.email} as ISendUser);
+      let send = await UserModule.SendUser({name: this.name, surname: this.surname, email: this.email} as ISendUser);
       if(send){
-        this.$router.push({ name: "welcome" });
+        this.$router.push({ name: "home" });
       }
     }
   }

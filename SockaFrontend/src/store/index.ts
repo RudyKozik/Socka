@@ -1,16 +1,14 @@
 import Vue from 'vue'
-import Vuex, { Payload } from 'vuex'
-import { IUserModule } from "./modules/RegisterModule";
+import Vuex from 'vuex'
+import { IUserModule } from "./modules/UserModule";
 import VuexPersistence from 'vuex-persist'
 import Cookies from 'js-cookie'
-import { ILoginUserModule } from './modules/LoginModule';
 import { IFeedModule } from './modules/FeedModule';
 
 Vue.use(Vuex);
 
 export interface IRootState {
-  regUser: IUserModule
-  logUser: ILoginUserModule
+  user: IUserModule
   feed: IFeedModule
 }
 
@@ -20,7 +18,7 @@ const vuexCookie = new VuexPersistence<IRootState>({
       expires: 365
     }),
   restoreState: (key) => Cookies.getJSON(key),
-  modules:['loginUser']
+  modules:['User']
 })
 
 export default new Vuex.Store<IRootState>({

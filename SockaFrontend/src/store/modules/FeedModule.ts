@@ -1,7 +1,7 @@
 import {Module, VuexModule, Action, Mutation, getModule } from 'vuex-module-decorators' 
 import store from "@/store/index";
 import axios, { AxiosResponse } from 'axios';
-import { LoginModule } from './LoginModule';
+import { UserModule } from './UserModule';
 
 export interface IFeedModule {
   feed: (string | number)[] 
@@ -34,7 +34,7 @@ class Feed extends VuexModule implements IFeedModule {
   @Action({rawError: true})
   async SendFeed(request: ISendFeed): Promise<AxiosResponse>{
     request.likesToSend = 0;
-    request.authorToSend = LoginModule.user?.user?.email!;
+    request.authorToSend = UserModule.user?.user?.email!;
     let result = await axios.post("https://localhost:5001/Feed/api/v1/create", {
       status: request.statusToSend,
       likes: request.likesToSend,

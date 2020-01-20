@@ -12,6 +12,11 @@ export interface ICreateUserRequest {
   password: string;
 }
 
+export interface ILoginUserRequest {
+  email: string;
+  password: string;
+}
+
 export interface ISendUser {
   id: string;
   name: string;
@@ -19,8 +24,8 @@ export interface ISendUser {
   email: string;
 }
 
-@Module({ dynamic: true, store, name: 'regUser' })
-class Register extends VuexModule implements IUserModule {
+@Module({ dynamic: true, store, name: 'User' })
+class User extends VuexModule implements IUserModule {
   user: firebase.auth.UserCredential | null = null;
   
   @Mutation
@@ -32,6 +37,14 @@ class Register extends VuexModule implements IUserModule {
   async Register( request: ICreateUserRequest): Promise<firebase.auth.UserCredential> {
     let authUser = await firebase.auth().createUserWithEmailAndPassword(request.email, request.password);
     console.log(authUser);
+    return authUser;
+  } 
+
+  @Action({rawError: true})
+  async Login( request: ILoginUserRequest): Promise<firebase.auth.UserCredential> {
+    let authUser = await firebase.auth().signInWithEmailAndPassword(request.email, request.password);
+    console.log(authUser);
+    let token = firebase.auth().currentUser?.getIdToken(true); 
     return authUser;
   } 
   
@@ -46,6 +59,12 @@ class Register extends VuexModule implements IUserModule {
     });
     return result;
   }
+
+  @Action({rawError: true})
+  async Refresh(): Promise<string> {
+    let token = await firebase.auth().currentUser?.getIdToken(true); 
+    return token!;
+  }
 }
 
-export const RegisterModule = getModule(Register);
+export const UserModule = getModule(User);
