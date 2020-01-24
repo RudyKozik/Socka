@@ -12,6 +12,7 @@
     "axios": "^0.19.0",
     "core-js": "^3.3.2",
     "firebase": "^7.3.0",
+    "guid-typescript": "^1.0.9",
     "js-cookie": "^2.2.1",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",

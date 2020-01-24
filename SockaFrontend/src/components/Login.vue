@@ -6,6 +6,7 @@
             <v-text-field 
               class="txtField" 
               dense 
+              color="main"
               v-model="email" 
               label="email" 
               outlined>
@@ -15,6 +16,7 @@
             <v-text-field 
               class="txtField" 
               dense 
+              color="main"
               type="password" 
               v-model="password" 
               label="Password" 

@@ -9,20 +9,17 @@ using System.Threading.Tasks;
 
 namespace SockaBackend.WebApi.Aplication.Commands
 {
-    public class AddLikeHandler : AsyncRequestHandler<AddLikeCommand>
+    public class AddCommentHandler : AsyncRequestHandler<AddCommentCommand>
     {
         private readonly Database database;
 
-        public AddLikeHandler(Database database)
+        public AddCommentHandler(Database database)
         {
             this.database = database;
         }
-
-        protected override async Task Handle(AddLikeCommand request, CancellationToken cancellationToken)
+        protected override async Task Handle(AddCommentCommand request, CancellationToken cancellationToken)
         {
-            var feed = database.Feeds.Find(request.Id);
-
-            feed.Likes = request.Like; 
+            database.Comments.Add(new Comment(request.Content, request.Author, request.IdFeed));
 
             await database.SaveChangesAsync(cancellationToken);
         }

@@ -28,16 +28,27 @@
         <v-icon>mdi-comment-processing</v-icon>
       </v-btn>
     </v-card-actions>
+    <v-divider></v-divider>
+    <v-card-text>
+      <AddComment />
+      <Comments :comments="comments" />
+    </v-card-text>
   </v-card>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import Component from 'vue-class-component';
-import { FeedModule, ISendLike } from '../store/modules/FeedModule';
+import { FeedModule, ISendLike } from '@/store/modules/FeedModule';
+import Comments from "@/components/Comment/Comments.vue"
+import  AddComment  from "@/components/Comment/AddComment.vue";
 
 @Component({
-  props:["feed"]
+  components:{
+    Comments,
+    AddComment
+  },
+  props:["feed", "comments"]
 })
 export default class Feed extends Vue{
   id: number = 0;

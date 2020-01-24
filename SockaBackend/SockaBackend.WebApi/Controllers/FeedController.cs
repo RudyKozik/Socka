@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using SockaBackend.Contracts.Requests;
 using SockaBackend.Infrastructure;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 namespace SockaBackend.WebApi.Controllers
 {
     [ApiController]
+    [EnableCors("CorsPolicy")]
     [Produces("application/json")]
     [Route("[controller]")]
     public class FeedController : Controller
@@ -30,6 +32,13 @@ namespace SockaBackend.WebApi.Controllers
             return Ok(feeds);
         }
 
+        [HttpGet(ApiRoutes.Feeds.GetComments)]
+        public IActionResult GetComments()
+        {
+            var comments = database.Comments;
+            return Ok(comments);
+        }
+
         [HttpPost(ApiRoutes.Feeds.Create)]
         public async Task<IActionResult> AddFeed(AddFeedRequest request, CancellationToken cancellation)
         {
@@ -41,6 +50,13 @@ namespace SockaBackend.WebApi.Controllers
         public async Task<IActionResult> AddLike(AddLikeRequest request, CancellationToken cancellation)
         {
             await mediator.Send(new AddLikeCommand(request.Id, request.Like), cancellation);
+            return Ok();
+        }
+
+        [HttpPost(ApiRoutes.Feeds.AddComment)]
+        public async Task<IActionResult> AddComment(AddCommentRequest request, CancellationToken cancellation)
+        {
+            await mediator.Send(new AddCommentCommand(request.Content, request.Author, request.IdFeed), cancellation);
             return Ok();
         }
     }

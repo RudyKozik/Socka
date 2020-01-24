@@ -1,7 +1,8 @@
 import {Module, VuexModule, Action, Mutation, getModule } from 'vuex-module-decorators' 
 import firebase from "firebase";
 import axios, { AxiosResponse } from "axios";
-import store from "@/store/index";
+import store, { IRootState } from "@/store/index";
+import VuexPersistence from 'vuex-persist';
 
 export interface IUserModule {
   user: firebase.auth.UserCredential | null
@@ -24,7 +25,7 @@ export interface ISendUser {
   email: string;
 }
 
-@Module({ dynamic: true, store, name: 'User' })
+@Module({ dynamic: true, store, name: 'user' })
 class User extends VuexModule implements IUserModule {
   user: firebase.auth.UserCredential | null = null;
   
@@ -32,18 +33,16 @@ class User extends VuexModule implements IUserModule {
   SetUser(authUser: firebase.auth.UserCredential){
     this.user = authUser;
   }
-  
+
   @Action({rawError: true})
   async Register( request: ICreateUserRequest): Promise<firebase.auth.UserCredential> {
     let authUser = await firebase.auth().createUserWithEmailAndPassword(request.email, request.password);
-    console.log(authUser);
     return authUser;
   } 
 
   @Action({rawError: true})
   async Login( request: ILoginUserRequest): Promise<firebase.auth.UserCredential> {
     let authUser = await firebase.auth().signInWithEmailAndPassword(request.email, request.password);
-    console.log(authUser);
     let token = firebase.auth().currentUser?.getIdToken(true); 
     return authUser;
   } 
@@ -51,7 +50,7 @@ class User extends VuexModule implements IUserModule {
   @Action({rawError: true})
   async SendUser( request: ISendUser): Promise<AxiosResponse>{
     request.id = this.user?.user?.uid!;
-  let result = await axios.post("https://localhost:5001/User/api/v1/users", {
+  let result = await axios.post("https://ultimatefrisbee.azurewebsites.net/User/api/v1/users", {
       id: request.id,
       name: request.name,
       surname: request.surname,

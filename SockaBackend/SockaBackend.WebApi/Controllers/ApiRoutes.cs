@@ -22,6 +22,10 @@ namespace SockaBackend.WebApi.Controllers
             public const string AddLike = Base + "/addLike";
 
             public const string UpdateLike = Base + "/updateLike";
+
+            public const string AddComment = Base + "/addComment";
+
+            public const string GetComments = Base + "/getComments";
         }
 
         public static class Users

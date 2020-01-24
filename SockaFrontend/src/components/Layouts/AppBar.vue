@@ -8,7 +8,7 @@
             width="80px"
             color="black"
             class="btn">
-              Menu 
+            Menu
             </v-btn>
           </v-toolbar-items>
         <v-spacer></v-spacer>

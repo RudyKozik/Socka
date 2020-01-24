@@ -9,6 +9,7 @@
           v-model="status"
           outlined
           filled
+          color="main"
           no-resize
           rows="6"
           dense>
@@ -21,6 +22,7 @@
           @click="AddFeed()"
           class="btn" 
           height="40px"
+          outlined
           width="150px"
           color="main">
           Uverejniť
@@ -34,7 +36,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import { FeedModule, ISendFeed } from '../store/modules/FeedModule';
+import { FeedModule, ISendFeed } from '@/store/modules/FeedModule';
 
 @Component
 export default class AddFeed extends Vue{

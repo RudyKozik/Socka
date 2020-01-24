@@ -3,9 +3,6 @@ import VueRouter from 'vue-router'
 import Welcome from '../views/WelcomePage.vue'
 import Reg from '../views/RegPage.vue'
 import Home from "../views/HomePage.vue";
-import { UserModule } from '@/store/modules/UserModule';
-import store from '@/store';
-
 
 Vue.use(VueRouter)
 
@@ -27,7 +24,7 @@ const router = new VueRouter({
       path: '/',
       name: 'home',
       component: Home,
-      beforeEnter: ((to, from, next) =>{
+      /*beforeEnter: ((to, from, next) =>{
         if(UserModule.user == null)
         {
           next({
@@ -36,7 +33,7 @@ const router = new VueRouter({
         } else{
           next()
         }
-      })
+      })*/
     }
   ]
 })  

@@ -6,7 +6,8 @@
           <v-text-field 
           class="first txtField" 
           label="Meno" 
-          v-model="name" 
+          v-model="name"
+          color="main" 
           clearable
           outlined>
           </v-text-field>
@@ -16,6 +17,7 @@
             class="first txtField"
             label="Priezvisko"
             v-model="surname"
+            color="main"
             clearable
             outlined
           ></v-text-field>
@@ -26,7 +28,8 @@
           <v-text-field 
           class="txtField" 
           v-model="email" 
-          label="Mail" 
+          label="Mail"
+          color="main" 
           outlined>
           </v-text-field>
         </v-col>
@@ -38,6 +41,7 @@
             v-model="password"
             label="Heslo"
             outlined
+            color="main"
             type="password"
             hint="Uistite sa, že je to najmenej 8 znakov vrátane čísla a velkého písmena."
           ></v-text-field>
