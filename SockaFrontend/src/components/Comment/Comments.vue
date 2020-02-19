@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div :key="comment.id" v-for="comment in comments" >
+    <div :key="comment.id" v-for="comment in filteredComments" >
       <Comment :comment="comment" />
     </div>
   </div>
@@ -10,12 +10,13 @@
 import Vue from 'vue'
 import Comment from "@/components/Comment/Comment.vue";
 import Component from 'vue-class-component';
+import { FeedModule } from '../../store/modules/FeedModule';
 
 @Component({
   components:{
     Comment
   },
-  props: ["comments"]
+  props:["filteredComments"]
 })
 export default class Comments extends Vue{
   

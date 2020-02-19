@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Welcome from '../views/WelcomePage.vue'
 import Reg from '../views/RegPage.vue'
 import Home from "../views/HomePage.vue";
+import AddTournament from "../views/AddTournamentPage.vue";
+import { UserModule } from '@/store/modules/UserModule';
 
 Vue.use(VueRouter)
 
@@ -34,6 +36,11 @@ const router = new VueRouter({
           next()
         }
       })*/
+    },
+    {
+      path: '/addTournament',
+      name: 'addTournament',
+      component: AddTournament
     }
   ]
 })  

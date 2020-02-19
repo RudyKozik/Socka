@@ -1,7 +1,7 @@
 <template>
   <div>
     <div :key="feed.id" v-for="feed in feeds">
-      <Feed :feed="feed" :comments="comments" />
+      <Feed :feed="feed" :filteredComments="filteredComments" />
     </div>
   </div>
 </template>
@@ -15,7 +15,7 @@ import Component from 'vue-class-component';
   components:{
       Feed
     },
-  props:["feeds", "comments"]
+  props:["feeds","filteredComments"]
 })
 export default class Feeds extends Vue{
   

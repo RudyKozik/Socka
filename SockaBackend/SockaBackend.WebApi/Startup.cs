@@ -37,7 +37,7 @@ namespace SockaBackend.WebApi
                 options.AddPolicy("CorsPolicy",
                 builder =>
                 {
-                    builder.WithOrigins("https://ultimateweb.z16.web.core.windows.net").AllowAnyMethod().AllowAnyHeader();
+                    builder.WithOrigins("https://ultimateweb.z16.web.core.windows.net", "http://localhost:8080").AllowAnyMethod().AllowAnyHeader();
                 });
             });
         }

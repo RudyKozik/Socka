@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 namespace SockaBackend.WebApi.Controllers
 {
     [ApiController]
-    [EnableCors("CorsPolicy")]
     [Produces("application/json")]
     [Route("[controller]")]
     public class FeedController : Controller
@@ -30,6 +29,13 @@ namespace SockaBackend.WebApi.Controllers
         {
             var feeds = database.Feeds;
             return Ok(feeds);
+        }
+
+        [HttpDelete(ApiRoutes.Feeds.Delete)]
+        public async Task<IActionResult> DeleteFeed(DeleteFeedRequest request , CancellationToken cancellation)
+        {
+            await mediator.Send(new DeleteFeedCommand(request.Id), cancellation);
+            return NoContent();
         }
 
         [HttpGet(ApiRoutes.Feeds.GetComments)]

@@ -19,9 +19,9 @@ namespace SockaBackend.WebApi.Controllers
 
             public const string Create = Base + "/create";
 
-            public const string AddLike = Base + "/addLike";
+            public const string Delete = Base + "/delete";
 
-            public const string UpdateLike = Base + "/updateLike";
+            public const string AddLike = Base + "/addLike";
 
             public const string AddComment = Base + "/addComment";
 

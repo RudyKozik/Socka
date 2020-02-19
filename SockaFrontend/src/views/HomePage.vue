@@ -10,7 +10,7 @@
         </v-row>
         <v-row > 
           <v-col :md="12" class="center">
-            <Feeds v-on="GetAll()" :feeds="feeds" :comments="comments" />
+            <Feeds  v-on="GetAll()" :feeds="feeds" :filteredComments="filteredComments" />
           </v-col>
         </v-row>  
       </v-content>
@@ -37,14 +37,15 @@ import { AxiosResponse } from 'axios';
 export default class HomePage extends Vue{
   feeds: any[] = []
   comments: any[] = []
+  filteredComments: any[] = []
 
   public async GetAll(){
     let result = await FeedModule.GetAll();
-    let comments = await FeedModule.GetComments();
-    FeedModule.SetComment(comments);
     FeedModule.SetFeed(result);
     this.feeds = FeedModule.feed;
-    this.comments = FeedModule.comment;
+    let comments = await FeedModule.GetComments();
+    FeedModule.SetComment(comments);
+    this.filteredComments = FeedModule.comment;
   }
 }
 </script>

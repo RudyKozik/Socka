@@ -2,14 +2,36 @@
   <v-app-bar app flat color="secondary">
         <v-spacer></v-spacer>
           <v-toolbar-items class="center">
-            <v-btn
-            text
-            height="25px"
-            width="80px"
-            color="black"
-            class="btn">
-            Menu
-            </v-btn>
+            <v-menu offset-y>
+              <template v-slot:activator="{ on }">
+                <v-btn
+                class="btn" 
+                height="20px" 
+                width= "80px"
+                v-on="on"
+                color="transparent"
+                depressed
+                >
+                Menu
+                </v-btn>
+              </template>
+              <v-list>
+                <v-list-item>
+                  <v-list-item-title>
+                    <v-row>
+                      <v-col>
+                        <a class="navigation" href="http://Localhost:8080">Domov</a>
+                      </v-col>
+                    </v-row>
+                    <v-row>
+                      <v-col>
+                        <a class="navigation" href="http://localhost:8080/addTournament">Turnaje</a>
+                      </v-col>
+                    </v-row>                              
+                  </v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
           </v-toolbar-items>
         <v-spacer></v-spacer>
           <v-toolbar-title class="headline">
@@ -25,7 +47,7 @@
             width= "80px"
             color="black"
             >
-            User
+            <a class="navigation" href="http://">Účet</a>    
             </v-btn>
           </v-toolbar-items>
         <v-spacer></v-spacer>
@@ -40,6 +62,8 @@ import LoginModule from "@/store/modules/LoginModule.vue"
 @Component
 export default class AppBar extends Vue{
   userName: string = "";
+
+  
 }
 </script>
 
@@ -51,5 +75,13 @@ export default class AppBar extends Vue{
   font-size: 18px;
   line-height: 28px;
   border-radius: 10px;
+}
+.navigation{
+  text-decoration: none;
+  color: black;
+  font-family: 'Sulphur Point', serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
 }
 </style>

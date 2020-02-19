@@ -56,7 +56,7 @@ export default class AddFeed extends Vue{
 }
 .box{ 
   height: 250px;
-  width: 600px;
+  width: 700px;
   border-radius: 10px;
   text-align: center;
 }
