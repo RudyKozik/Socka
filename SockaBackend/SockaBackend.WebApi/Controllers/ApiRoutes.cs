@@ -32,6 +32,8 @@ namespace SockaBackend.WebApi.Controllers
         {
             public const string Get = Base + "/users/{id}";
 
+            public const string GetAll = Base + "/getAll";
+
             public const string Create = Base + "/users";
         }
     }

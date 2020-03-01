@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using SockaBackend.Domain;
 using SockaBackend.Infrastructure;
 using System;

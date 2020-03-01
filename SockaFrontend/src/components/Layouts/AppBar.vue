@@ -20,12 +20,26 @@
                   <v-list-item-title>
                     <v-row>
                       <v-col>
-                        <a class="navigation" href="http://Localhost:8080">Domov</a>
+                        <router-link class="link" :to="{name: 'home'}">
+                          <v-btn
+                          class="btn" 
+                          color="transparent"
+                          depressed>
+                          Domov
+                          </v-btn>
+                        </router-link> 
                       </v-col>
                     </v-row>
                     <v-row>
                       <v-col>
-                        <a class="navigation" href="http://localhost:8080/addTournament">Turnaje</a>
+                        <router-link class="link" :to="{name: 'addTournament'}">
+                          <v-btn
+                          class="btn" 
+                          color="transparent"
+                          depressed>
+                          Turnaje
+                          </v-btn>
+                        </router-link> 
                       </v-col>
                     </v-row>                              
                   </v-list-item-title>
@@ -35,20 +49,21 @@
           </v-toolbar-items>
         <v-spacer></v-spacer>
           <v-toolbar-title class="headline">
-            <span class="font-weight-light">Ultimate</span>
+            <span class="font-weight-light">Ulti</span>
             <span>Web</span>
           </v-toolbar-title>
         <v-spacer></v-spacer>
           <v-toolbar-items class="center">
-            <v-btn
-            text
-            class="btn" 
-            height="20px" 
-            width= "80px"
-            color="black"
-            >
-            <a class="navigation" href="http://">Účet</a>    
-            </v-btn>
+            <router-link class="link" :to="{name: 'profile'}">
+              <v-btn
+              class="btn" 
+              height="65px" 
+              width= "80px"
+              color="transparent"
+              depressed>
+              Účet
+              </v-btn>
+            </router-link> 
           </v-toolbar-items>
         <v-spacer></v-spacer>
       </v-app-bar>
@@ -76,12 +91,7 @@ export default class AppBar extends Vue{
   line-height: 28px;
   border-radius: 10px;
 }
-.navigation{
+.link{
   text-decoration: none;
-  color: black;
-  font-family: 'Sulphur Point', serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 18px;
 }
 </style>

@@ -37,6 +37,13 @@ namespace SockaBackend.WebApi.Controllers
             return Ok(get);
         }
 
+        [HttpGet(ApiRoutes.Users.GetAll)]
+        public IActionResult GetAll()
+        {
+            var users = database.Users;
+            return Ok(users);
+        }
+
         [HttpPost(ApiRoutes.Users.Create)]
         public async Task<IActionResult> CreateUser(CreateUserRequest request, CancellationToken cancellation)
         {

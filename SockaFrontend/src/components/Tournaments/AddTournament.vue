@@ -51,7 +51,7 @@
           </v-text-field>
         </v-col>
       </v-row>
-      <v-row class="center">
+      <v-row class="center" dense>
         <v-col :md="5">
           <v-menu
           :nudge-right="40"
@@ -105,7 +105,7 @@
           </v-menu>
         </v-col>
       </v-row>
-      <v-row class="center">
+      <v-row class="center" dense>
         <v-col :md="10">
           <v-btn
           class="btn"
@@ -133,6 +133,7 @@ export default class AddTournament extends Vue{
   location: string = "";
   startDate: string = "";
   endDate: string = "";
+  url: string = "";
 }
 </script>
 

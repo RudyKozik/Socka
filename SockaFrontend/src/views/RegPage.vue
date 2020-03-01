@@ -3,7 +3,7 @@
       <v-container fluid>
         <v-app-bar app flat color="background">
           <v-toolbar-title class="headline">
-            <span class="font-weight-light">Ultimate</span>
+            <span class="font-weight-light">Ulti</span>
             <span>Web</span>
           </v-toolbar-title>
           <v-spacer></v-spacer>
@@ -12,8 +12,7 @@
               <v-btn 
               icon
               x-large
-              color="black"
-              class="btn"> 
+              color="black"> 
                 <v-icon class="icon">mdi-arrow-left-thick</v-icon>
               </v-btn>
             </router-link> 
@@ -50,9 +49,6 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .link{
   text-decoration: none;
-}
-.a{
-border: 1px solid black;
 }
 .center{
   display: flex;

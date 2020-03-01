@@ -3,7 +3,7 @@
     <v-container fluid>
       <v-app-bar app flat color="background">
         <v-toolbar-title class="headline">
-          <span class="font-weight-light">Ultimate</span>
+          <span class="font-weight-light">Ulti</span>
           <span>Web</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>

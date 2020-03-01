@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SockaBackend.Domain", "Sock
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SockaBackend.Infrastructure", "SockaBackend.Infrastructure\SockaBackend.Infrastructure.csproj", "{2B76CFD6-EE0E-41E6-B59B-B91F3EC0C21B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SockaBackend.Contracts", "SockaBackend.Contracts\SockaBackend.Contracts.csproj", "{169772A7-9E86-4F25-92C0-9E73D84C59EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SockaBackend.Contracts", "SockaBackend.Contracts\SockaBackend.Contracts.csproj", "{169772A7-9E86-4F25-92C0-9E73D84C59EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

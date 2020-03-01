@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { IUserModule, UserModule } from "./modules/UserModule";
+import { IUserModule, UserModule} from "./modules/UserModule";
 import VuexPersistence from 'vuex-persist'
 import Cookies from 'js-cookie'
-import { IFeedModule, FeedModule } from './modules/FeedModule';
+import { IFeedModule} from './modules/FeedModule';
 
 Vue.use(Vuex);
 
@@ -12,7 +12,7 @@ export interface IRootState {
   feed: IFeedModule
 }
 
-const vuexCookie = new VuexPersistence<IRootState>({
+export const vuexCookie = new VuexPersistence<IRootState>({
   saveState: (key, state) =>
     Cookies.set(key, state, {
       expires: 365

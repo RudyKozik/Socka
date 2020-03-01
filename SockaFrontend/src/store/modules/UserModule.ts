@@ -1,11 +1,12 @@
 import {Module, VuexModule, Action, Mutation, getModule } from 'vuex-module-decorators' 
 import firebase from "firebase";
 import axios, { AxiosResponse } from "axios";
-import store, { IRootState } from "@/store/index";
-import VuexPersistence from 'vuex-persist';
+import store from "@/store/index";
+
 
 export interface IUserModule {
   user: firebase.auth.UserCredential | null
+  actualUser: any[] 
 }
 
 export interface ICreateUserRequest {
@@ -28,10 +29,16 @@ export interface ISendUser {
 @Module({ dynamic: true, store, name: 'user' })
 class User extends VuexModule implements IUserModule {
   user: firebase.auth.UserCredential | null = null;
+  actualUser: any[] = [];
   
   @Mutation
   SetUser(authUser: firebase.auth.UserCredential){
     this.user = authUser;
+  }
+
+  @Mutation
+  SetActualUser(user: AxiosResponse){
+    this.actualUser[0] = user.data[1];   
   }
 
   @Action({rawError: true})
@@ -56,6 +63,12 @@ class User extends VuexModule implements IUserModule {
       surname: request.surname,
       mail: request.email
     });
+    return result;
+  }
+
+  @Action({rawError: true})
+  async GetUser(): Promise<AxiosResponse>{
+    let result = await axios.get("https://localhost:5001/User/api/v1/getAll");
     return result;
   }
 
