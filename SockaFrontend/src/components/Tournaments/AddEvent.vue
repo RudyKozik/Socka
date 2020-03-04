@@ -15,7 +15,7 @@
       </v-row>
       <v-row class="center">
         <v-col :md="5">
-          <span class="url">localhost:8080/tounament/{{name}}</span>        
+          <span class="url">localhost:8080/tounament/{{url}}</span>        
         </v-col>
         <v-col :md="5">
           <v-text-field
@@ -113,6 +113,7 @@
           width="200px"
           color="main"
           depressed
+          @click="AddEvent()"
           >Uverejniť</v-btn>
         </v-col>
       </v-row>
@@ -123,17 +124,28 @@
 <script lang="ts">
 import Vue from 'vue'
 import Component from 'vue-class-component'
+import { EventModule, ISendEventRequest } from '@/store/modules/EventModule';
 
 @Component({
   
 })
-export default class AddTournament extends Vue{
+export default class AddEvent extends Vue{
   name: string = "";
   organizer: string = "";
   location: string = "";
   startDate: string = "";
   endDate: string = "";
   url: string = "";
+
+  public async AddEvent() {
+    let event = await EventModule.SendEvent({ 
+      name: this.name, 
+      organizer: this.organizer, 
+      location: this.location,
+      startDate: this.startDate,
+      endDate: this.endDate, 
+      url: this.url} as ISendEventRequest);
+  }
 }
 </script>
 

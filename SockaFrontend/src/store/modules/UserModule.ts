@@ -1,5 +1,5 @@
 import {Module, VuexModule, Action, Mutation, getModule } from 'vuex-module-decorators' 
-import firebase from "firebase";
+import firebase, { messaging } from "firebase";
 import axios, { AxiosResponse } from "axios";
 import store from "@/store/index";
 
@@ -44,12 +44,20 @@ class User extends VuexModule implements IUserModule {
   @Action({rawError: true})
   async Register( request: ICreateUserRequest): Promise<firebase.auth.UserCredential> {
     let authUser = await firebase.auth().createUserWithEmailAndPassword(request.email, request.password);
+    if(!authUser)
+    {
+      console.error();
+    }
     return authUser;
   } 
 
   @Action({rawError: true})
   async Login( request: ILoginUserRequest): Promise<firebase.auth.UserCredential> {
     let authUser = await firebase.auth().signInWithEmailAndPassword(request.email, request.password);
+    if(!authUser)
+    {
+      console.error();
+    }
     let token = firebase.auth().currentUser?.getIdToken(true); 
     return authUser;
   } 
@@ -57,7 +65,7 @@ class User extends VuexModule implements IUserModule {
   @Action({rawError: true})
   async SendUser( request: ISendUser): Promise<AxiosResponse>{
     request.id = this.user?.user?.uid!;
-  let result = await axios.post("https://localhost:5001/User/api/v1/users", {
+    let result = await axios.post("https://localhost:5001/User/api/v1/users", {
       id: request.id,
       name: request.name,
       surname: request.surname,

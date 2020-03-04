@@ -1,11 +1,11 @@
 <template>
-  <div id="addTurnament">
+  <div id="addEvent">
     <v-container fluid>
       <AppBar />
       <v-content>
         <v-row>
           <v-col class="center">
-            <AddTournament />
+            <AddEvent />
           </v-col>
         </v-row>
       </v-content>
@@ -16,16 +16,16 @@
 <script lang="ts">
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import AddTournament from "../components/Tournaments/AddTournament.vue";
+import AddEvent from "../components/Tournaments/AddEvent.vue";
 import AppBar from "../components/Layouts/AppBar.vue";
 
 @Component({
   components:{
-    AddTournament,
+    AddEvent,
     AppBar
   }
 })
-export default class AddTournamentPage extends Vue{
+export default class AddEventPage extends Vue{
   
 }
 </script>

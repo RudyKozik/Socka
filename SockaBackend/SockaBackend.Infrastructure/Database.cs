@@ -9,6 +9,8 @@ namespace SockaBackend.Infrastructure
         public DbSet<User> Users { get; set; }
         public DbSet<Feed> Feeds { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Event> Tournaments { get; set; }
+        public DbSet<Team> Teams { get; set; }
 
         public Database()
         {

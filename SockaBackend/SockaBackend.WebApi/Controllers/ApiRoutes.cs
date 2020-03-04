@@ -36,5 +36,16 @@ namespace SockaBackend.WebApi.Controllers
 
             public const string Create = Base + "/users";
         }
+
+        public static class Events
+        {
+            public const string Add = Base + "/addEvent"; 
+        }
+
+        public static class Teams
+        {
+            public const string Add = Base + "/AddTeam";
+            public const string Get = Base + "/GetTeam";
+        }
     }
 }

@@ -30,14 +30,6 @@
     </v-row>
     <v-row class="center"> 
       <v-col md="9">
-        <router-link :to="{name: 'welcome'}">
-          <v-btn
-          icon 
-          color="transparent"> 
-            <img src="https://lh3.googleusercontent.com/proxy/pt5PS6ZhLfNfB3sTxc-adAahv36QH0hsc9FXt46dlFmtE5mqSHawqEACsdDf3WjJb2NsqSp8HI_y8aPkY3kpZV9EwwyBXxY2VUmYy87AQmDW7mFV"
-            class="team border">
-          </v-btn>
-        </router-link> 
       </v-col>
     </v-row>
   </v-card>
@@ -58,7 +50,6 @@ public async GetUser(){
     let result = await UserModule.GetUser();
     UserModule.SetActualUser(result);
     this.user = UserModule.actualUser;
-    console.log(this.user);
   }
 }
 </script>

@@ -3,6 +3,11 @@
   class="feed"
   light
   width="700">
+    <v-card-text 
+    class="headline font-weight-bold">
+      {{feed.status}}
+    </v-card-text>
+    <v-divider></v-divider>
     <v-card-actions>
       <v-card-text>
         {{feed.author}}
@@ -11,18 +16,6 @@
         {{feed.date}}
       </v-card-text>
       <v-btn 
-      icon>
-        <v-icon>mdi-dots-horizontal</v-icon>
-      </v-btn>
-    </v-card-actions>
-    <v-divider></v-divider>
-    <v-card-text 
-    class="headline font-weight-bold">
-      {{feed.status}}
-    </v-card-text>
-    <v-divider></v-divider>
-    <v-card-actions>
-      <v-btn 
       icon
       @click="SendLike()">
         <v-icon>mdi-heart</v-icon>
@@ -30,9 +23,32 @@
       <span>
         {{feed.likes}}
       </span>
-      <v-btn icon>
-        <v-icon>mdi-comment-processing</v-icon>
-      </v-btn>
+      <v-menu offset-y>
+        <template v-slot:activator="{ on }">
+          <v-btn
+          v-on="on"
+          icon>
+            <v-icon>mdi-dots-horizontal</v-icon>
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-item>
+            <v-list-item-title>
+              <v-row>
+                <v-col>
+                  <v-btn
+                  class="btn" 
+                  color="transparent"
+                  @click="Delete()"
+                  depressed>
+                  <v-icon>mdi-delete</v-icon>
+                  </v-btn>
+                </v-col>
+              </v-row>                 
+            </v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
     </v-card-actions>
     <v-divider></v-divider>
     <v-card-text>
@@ -72,6 +88,7 @@ import Vue from 'vue'
 import Component from 'vue-class-component';
 import { FeedModule, ISendLike, ISendComment  } from '@/store/modules/FeedModule';
 import Comments from "@/components/Comment/Comments.vue"
+import axios from 'axios';
 
 @Component({
   components:{
@@ -83,6 +100,10 @@ export default class Feed extends Vue{
   id: string = "";
   like: number = 1;
   content: string = "";
+
+  public async Delete(){
+    let result = await axios.delete("https://localhost:5001/Feed/api/v1/delete", {data: {id: this.id}});
+  }
 
   public async SendLike(){
     this.id = this.$props.feed.id;

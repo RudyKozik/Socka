@@ -3,8 +3,9 @@ import VueRouter from 'vue-router'
 import Welcome from '../views/WelcomePage.vue'
 import Reg from '../views/RegPage.vue'
 import Home from "../views/HomePage.vue";
-import AddTournament from "../views/AddTournamentPage.vue";
+import AddEvent from "../views/AddEventPage.vue";
 import Profile from "../views/ProfilePage.vue";
+import SearchTeam from "../views/SearchTeamPage.vue"
 import { vuexCookie } from '@/store';
 
 
@@ -41,13 +42,18 @@ const router = new VueRouter({
     },
     {
       path: '/pridatTurnaj',
-      name: 'addTournament',
-      component: AddTournament
+      name: 'addEvent',
+      component: AddEvent
     },
     {
       path: '/profil',
       name: 'profile',
       component: Profile
+    },
+    {
+      path: '/najstTim',
+      name: 'searchTeam',
+      component: SearchTeam
     }
   ]
 })  
